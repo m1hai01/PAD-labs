@@ -14,14 +14,34 @@ namespace FileManagementAPI.Controllers
             _logger = logger; // Initialize the logger
         }
 
-        [HttpPost]
-        [Route("upload")]
-        public IActionResult UploadFile([FromBody] FileUploadRequest request)
+        [HttpGet]
+        [Route("status")]
+        public IActionResult GetStatus()
         {
             try
             {
-                // Implement file upload logic here
-                // ...
+                
+                _logger.LogInformation("Status endpoint accessed. Service is healthy.");
+                return Ok(new { message = "User Management API is healthy" });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while checking service status.");
+                return StatusCode(500, new { message = "Internal Server Error" });
+            }
+        }
+
+
+        [HttpPost]
+        [Route("upload")]
+        public async Task<IActionResult> UploadFile([FromBody] FileUploadRequest request)
+        {
+            try
+            {
+                // Simulate a long-running operation by adding a delay
+               // await Task.Delay(TimeSpan.FromSeconds(30)); // Delay for 10 seconds
+
+                
 
                 _logger.LogInformation("File uploaded successfully. File Name: {FileName}", request.FileName);
 
@@ -35,6 +55,7 @@ namespace FileManagementAPI.Controllers
                 return StatusCode(500, new { message = "Internal Server Error" });
             }
         }
+
     }
 
     public class FileUploadRequest

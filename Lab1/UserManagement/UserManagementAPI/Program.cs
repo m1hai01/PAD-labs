@@ -17,8 +17,12 @@ builder.Services.AddCors(options =>
         });
 });
 
+// Register ApiService and configure HttpClient
 builder.Services.AddScoped<IApiService, ApiService>();
-builder.Services.AddHttpClient<ApiService>();
+builder.Services.AddHttpClient<ApiService>(client =>
+{
+    // Configure HttpClient if needed (base address, default headers, etc.)
+});
 
 var app = builder.Build();
 
