@@ -1,6 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using UserManagementAPI.Database;
 using UserManagementAPI.Interfaces;
+using UserManagementAPI.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.Limits.MaxConcurrentConnections = 5;
+    options.Limits.MaxConcurrentUpgradedConnections = 5;
+});
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -23,6 +33,13 @@ builder.Services.AddHttpClient<ApiService>(client =>
 {
     // Configure HttpClient if needed (base address, default headers, etc.)
 });
+
+// Configure MS SQL Server databases
+builder.Services.AddDbContext<UserDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("UserServiceDBConnection"));
+});
+
 
 var app = builder.Build();
 
