@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "iNUWt3VVM0yaLUPpPHsZ6hZliCLKnqi55iXQxdtHeCeqYlqijUEXWtqd7ZHYUwogJp6oj1kZ5kYaT+Ipz++IuA==",
+  "dgSpecHash": "6U2hLUqhmHRkRN7lYJiIt/B9ON9z/gs81s407MdivGvjy1GakaMO+PY6AtedJxBmPmmU4IugjI1Lx2s/Np/Omw==",
   "success": true,
   "projectFilePath": "D:\\UTM\\Anul4\\Semestrul1\\PAD\\Lab1\\UserManagement\\UserManagementAPI\\UserManagementAPI.csproj",
   "expectedPackageFiles": [
@@ -38,6 +38,7 @@
     "C:\\Users\\mustu\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\mustu\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
     "C:\\Users\\mustu\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
+    "C:\\Users\\mustu\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.5\\microsoft.visualstudio.azure.containers.tools.targets.1.19.5.nupkg.sha512",
     "C:\\Users\\mustu\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\mustu\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "C:\\Users\\mustu\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
