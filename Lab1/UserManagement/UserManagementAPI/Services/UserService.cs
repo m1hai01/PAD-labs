@@ -17,6 +17,11 @@ namespace UserManagementAPI.Services
         {
             return _context.Users.Find(userId);
         }
+
+        public void CreateUser(User user)
+        {
+            _context.Add(user);
+        }
     }
 
 }

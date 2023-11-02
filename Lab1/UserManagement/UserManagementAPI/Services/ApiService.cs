@@ -4,6 +4,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using UserManagementAPI.Entities;
 using UserManagementAPI.Interfaces;
 using UserManagementAPI.Models;
 
@@ -69,5 +70,10 @@ public class ApiService : IApiService
                 throw new Exception("An error occurred while making the request.", ex);
             }
         }
+    }
+
+    public void CreateUser(User user)
+    {
+        throw new NotImplementedException();
     }
 }

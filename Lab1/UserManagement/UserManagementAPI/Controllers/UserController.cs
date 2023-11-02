@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using UserManagementAPI.Models;
 using System.Text;
 using Microsoft.Extensions.Logging;
+using UserManagementAPI.Entities;
 using UserManagementAPI.Interfaces;
 
 namespace UserManagementAPI.Controllers
@@ -46,6 +47,12 @@ namespace UserManagementAPI.Controllers
         {
             try
             {
+                /*_apiService.CreateUser(new User
+                {
+                    FullName = request.Username,
+                    Id = Guid.NewGuid()
+                });*/
+
                 // Log user registration success and return a success message
                 _logger.LogInformation("User registered successfully.");
                 return Ok(new { message = "User registered successfully" });

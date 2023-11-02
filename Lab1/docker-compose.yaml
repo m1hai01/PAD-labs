@@ -1,0 +1,27 @@
+services:
+  user-management-api:
+    build:
+      context: ./UserManagement/UserManagementAPI  # Path to your User Management API Dockerfile
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    # volumes:
+    #   - "d/UTM/Anul4/Semestrul1/PAD/Lab1/UserManagement/UserManagementAPI:/App"
+
+  file-management-api:
+    build:
+      context: ./FileManagement/FileManagementAPI  # Path to your File Management API Dockerfile
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5001"
+    # volumes:
+    #   - "/D:/UTM/Anul4/Semestrul1/PAD/Lab1/FileManagement/FileManagementAPI:/App"
+
+  gateway:
+    build:
+      context: ./Gateway  # Path to your Gateway Dockerfile
+      dockerfile: Dockerfile  
+    ports:
+      - "80:80"
+    # volumes:
+    #   - "D:/UTM/Anul4/Semestrul1/PAD/Lab1/Gateway:/app"

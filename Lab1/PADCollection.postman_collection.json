@@ -1,0 +1,45 @@
+{
+	"info": {
+		"_postman_id": "271ba777-5ddd-4097-8236-feee1d572795",
+		"name": "PADCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "24927652"
+	},
+	"item": [
+		{
+			"name": "STATUS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5000/api/users/status"
+			},
+			"response": []
+		},
+		{
+			"name": "REGISTER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost:5000/api/users/register"
+			},
+			"response": []
+		},
+		{
+			"name": "UPLOAD",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost:5000/api/users/upload"
+			},
+			"response": []
+		},
+		{
+			"name": "STATUSFILE",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
