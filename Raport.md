@@ -29,7 +29,8 @@ Lab 1:
 ![image](https://cdn.discordapp.com/attachments/826165651306971166/1156879263035818074/Blank_diagram.png?ex=65169346&is=651541c6&hm=de0e3224c58bf5f9b2354b7d4e2b96858d58bf48132a462e1c78cc7b192e1f71&)
 
 Lab 2:
-![image]([https://cdn.discordapp.com/attachments/826165651306971166/1156879263035818074/Blank_diagram.png?ex=65169346&is=651541c6&hm=de0e3224c58bf5f9b2354b7d4e2b96858d58bf48132a462e1c78cc7b192e1f71&](https://cdn.discordapp.com/attachments/826165651306971166/1169585386239037500/dLLDRzim3BthLn0-ROTYTn-AjWbMj42m8acxmx03QpE945dA9AM5E-o_JrHSHt7i8EtDUlnu9FL4NpcFrcyh9RpqYc1MEqyLZCd9fOQnnAN5IeWD5cjS4cIFZYnCK8T3HTh3zSDT1dy5m2-sZ8psrYX5zZT3rrk_2awoG2-Ddf5zaGMr5cFbsv61iupHupEw0FnBcB_BK5ulCriwp0obQQTKr8MY6tb0DYEqnQf5KhPRzFIATSFGd4wsDv5bgOANxUcmOzjNqycuAoW5GqrbCmx8tWUJJ7oEpuhQblUdFKM3fOb6ocpBcJUMM-LK1GEGHHmQGyOXXvSA5nUNq7kfUGeJS9ZeTOmfsi9pU28h5pMCB9NiYygT5tTBcYnJtV-S3rNP5LZUeac5NQSkqMX5nJe2C3MAd3XKMtHFr9R70_pOS7KXQw__aHfpc9WN0c_UJH1ieaycG_5JSk7Q21RML9zEya2sGXrch-gm0HHv4br5nj23TnF35iPM3In4..png?ex=6555f045&is=65437b45&hm=fbdcad941942be858ae3f789585d9209c52d6335b08895f97ab4b3aff1cea241&))
+![image](https://github.com/m1hai01/PAD-labs/assets/78650694/da752af6-315a-43c9-ac5d-f6a20ae2d622)
+
 
  **System Components Overview**
  
@@ -240,6 +241,7 @@ In my File Sharing System project, I will implement a robust deployment and scal
 
 To test the application, execute the compose file located in the PAD_LABORATORIES directory using the specified commands.
 ``` docker compose pull 
-    docker compose up
+```
+```docker compose up
 ```
 
