@@ -240,8 +240,10 @@ In my File Sharing System project, I will implement a robust deployment and scal
 #### Orchestration with Kubernetes
 
 To test the application, execute the compose file located in the PAD_LABORATORIES directory using the specified commands.
-``` docker compose pull 
+```markdown
+ docker compose pull 
 ```
-```docker compose up
+```markdown
+docker compose up
 ```
 
