@@ -10,10 +10,10 @@ cache = Cache(app, config={'CACHE_TYPE': 'simple'})  # Use an in-memory cache
 logging.basicConfig(level=logging.DEBUG)  # Set the logging level to DEBUG
 
 # User Management API endpoint
-USER_API_URL = "http://localhost:5000/api/users"
+USER_API_URL = "http://localhost/api/users"
 
 # File Management API endpoint
-FILE_API_URL = "http://localhost:5001/api/files"
+FILE_API_URL = "http://localhost/api/files"
 
 # Set cache timeout in seconds (e.g., 60 seconds)
 CACHE_TIMEOUT = 60
