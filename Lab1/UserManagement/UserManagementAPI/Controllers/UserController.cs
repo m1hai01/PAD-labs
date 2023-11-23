@@ -68,6 +68,25 @@ namespace UserManagementAPI.Controllers
         // Endpoint for uploading a file (POST /api/users/upload)
         [HttpPost]
         [Route("upload")]
+        /*public IActionResult UploadFile()
+        {
+            try
+            {
+                // Simulate an HttpRequestException for testing purposes
+                throw new HttpRequestException("Simulated HttpRequestException in the upload endpoint.");
+
+                // The actual implementation logic would typically follow, but it won't be executed in this example due to the exception.
+            }
+            catch (HttpRequestException ex)
+            {
+                // Optionally log the exception details for debugging or analysis
+                Console.WriteLine($"HttpRequestException caught: {ex.Message}");
+
+                // Rethrow the exception to ensure it is recognized by Polly's circuit breaker
+                throw;
+            }
+        }*/
+
         public async Task<IActionResult> UploadFile()
         {
             try
@@ -107,5 +126,6 @@ namespace UserManagementAPI.Controllers
                 return StatusCode(500, new { message = "Internal Server Error" });
             }
         }
+
     }
 }
