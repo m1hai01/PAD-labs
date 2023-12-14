@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 using UserManagementAPI.Database;
 using UserManagementAPI.Interfaces;
 using UserManagementAPI.Models;
@@ -16,6 +17,12 @@ builder.WebHost.ConfigureKestrel(options =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Host.UseSerilog();
+builder.Services.AddLogging();
+
+var port = builder.Configuration.GetValue<string>("port");
+Console.WriteLine(port);
+builder.WebHost.UseUrls($"http://*:{port}");
 
 // Enable CORS
 builder.Services.AddCors(options =>
@@ -57,7 +64,7 @@ app.UseRouting();
 // Enable CORS middleware
 //app.UseCors("AllowAllOrigins");
 app.UseCors("AllowGateway");
-
+app.UseSerilogRequestLogging();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();

@@ -28,6 +28,8 @@ builder.Services.AddDbContext<FileDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("FileServiceDBConnection"));
 });
 
+var port = builder.Configuration.GetValue<string>("port");
+builder.WebHost.UseUrls($"http://*:{port}");
 
 var app = builder.Build();
 

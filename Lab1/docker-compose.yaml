@@ -1,27 +1,91 @@
 services:
-  user-management-api:
+  user-management-api-1:
     build:
-      context: ./UserManagement/UserManagementAPI  # Path to your User Management API Dockerfile
+      context: ./UserManagement/UserManagementAPI 
       dockerfile: Dockerfile
+    container_name: user-management-api-1
+    environment:
+      - port=5000
+      - ElasticConfiguration:Uri=http://elasticsearch:9200
+      - ElasticConfiguration:Username=elastic
+      - ElasticConfiguration:Password=hHEXV7OUeCdCFtmkRN34
     ports:
-      - "5000:5000"
-    # volumes:
-    #   - "d/UTM/Anul4/Semestrul1/PAD/Lab1/UserManagement/UserManagementAPI:/App"
+      - 5000:5000
 
-  file-management-api:
+  file-management-api-1:
     build:
-      context: ./FileManagement/FileManagementAPI  # Path to your File Management API Dockerfile
+      context: ./FileManagement/FileManagementAPI
       dockerfile: Dockerfile
+    container_name: file-management-api-1
+    environment:
+      - port=5001
     ports:
-      - "5001:5001"
-    # volumes:
-    #   - "/D:/UTM/Anul4/Semestrul1/PAD/Lab1/FileManagement/FileManagementAPI:/App"
+      - 5001:5001
+
+  user-management-api-2:
+    build:
+      context: ./UserManagement/UserManagementAPI 
+      dockerfile: Dockerfile
+    container_name: user-management-api-2
+    environment:
+      - port=6000
+      - ElasticConfiguration:Uri=http://elasticsearch:9200
+      - ElasticConfiguration:Username=elastic
+      - ElasticConfiguration:Password=hHEXV7OUeCdCFtmkRN34
+    ports:
+      - 6000:6000
+
+  file-management-api-2:
+    build:
+      context: ./FileManagement/FileManagementAPI
+      dockerfile: Dockerfile
+    container_name: file-management-api-2
+    environment:
+      - port=6001
+    ports:
+      - 6001:6001
 
   gateway:
     build:
-      context: ./Gateway  # Path to your Gateway Dockerfile
+      context: ./Gateway
       dockerfile: Dockerfile  
+    restart: on-failure
+    environment:
+      - UM1=http://user-management-api-1:5000
+      - UM2=http://user-management-api-2:6000
+      - FM1=http://file-management-api-1:5001
+      - FM2=http://file-management-api-2:6001
     ports:
-      - "80:80"
-    # volumes:
-    #   - "D:/UTM/Anul4/Semestrul1/PAD/Lab1/Gateway:/app"
+      - 80:80
+    depends_on:
+      - file-management-api-1
+      - user-management-api-1
+      - file-management-api-2
+      - user-management-api-2
+
+  elasticsearch:
+    container_name: elasticsearch
+    image: elasticsearch:8.10.3
+    ports:
+      - 9200:9200
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    environment:
+      - xpack.profiling.enabled=true
+      - xpack.watcher.enabled=false
+      - xpack.security.enabled=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+ 
+  kibana:
+    container_name: kibana
+    image: kibana:8.10.3
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+    environment:
+      - ELASTICSEARCH_URL=http://lab1-elasticsearch:9200
+
+volumes:
+  elasticsearch-data:

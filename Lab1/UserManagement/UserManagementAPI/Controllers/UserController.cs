@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.Extensions.Logging;
 using UserManagementAPI.Entities;
 using UserManagementAPI.Interfaces;
+using Microsoft.Extensions.Configuration;
 
 namespace UserManagementAPI.Controllers
 {
@@ -13,10 +14,12 @@ namespace UserManagementAPI.Controllers
     {
         private readonly IApiService _apiService;
         private readonly ILogger<UserController> _logger; // Add ILogger
+        private string port = "";
 
         // Constructor for UserController, initializing ApiService and ILogger
-        public UserController(IApiService apiService, ILogger<UserController> logger)
+        public UserController(IApiService apiService, ILogger<UserController> logger,IConfiguration configuration)
         {
+            port = configuration.GetValue<string>("port")!;
             _apiService = apiService;
             _logger = logger; // Initialize the logger
         }
@@ -92,7 +95,8 @@ namespace UserManagementAPI.Controllers
             try
             {
                 // Read the file and create a FileUploadRequest object
-                var filePath = @"D:\1.txt";
+                var path = Directory.GetCurrentDirectory();
+                var filePath = $@"{path}\1.txt";
                 byte[] fileBytes;
 
                 try
@@ -125,6 +129,16 @@ namespace UserManagementAPI.Controllers
                 _logger.LogError(ex, "Error occurred during file upload.");
                 return StatusCode(500, new { message = "Internal Server Error" });
             }
+        }
+
+        [HttpGet("test_breaker")]
+        public IActionResult TestBreaker()
+        {
+            _logger.LogInformation($"{port} port");
+            if (port == "5000")
+                return Ok("good breaker");
+
+            return StatusCode(503, "testing internal server error");
         }
 
     }
